@@ -28,9 +28,6 @@ $(NAME): $(OBJS) $(SRCS_MAND:.c=.o)
 	$(CC) $(OBJS) $(SRCS_MAND:.c=.o) $(MFLAGS) $(CFLAGS) -framework OpenGL -framework AppKit -o $(NAME) -g
 
 bonus : $(NAME) $(OBJS_BONUS)
-	make -C ./libft
-	make -C ./ft_printf
-	make -C ./get_next_line
 	$(CC) $(OBJS) $(OBJS_BONUS) $(MFLAGS) $(CFLAGS) -framework OpenGL -framework AppKit -o $(NAME)
 
 fclean : clean
@@ -45,6 +42,7 @@ clean :
 	$(RM) ./src/*.o
 	$(RM) ./ft_printf/*.o
 	$(RM) ./get_next_line/*.o
+	$(RM) ./bonus/write_screen.o
 
 re : fclean all
 
