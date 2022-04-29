@@ -6,7 +6,7 @@
 /*   By: binam <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 05:47:51 by binam             #+#    #+#             */
-/*   Updated: 2022/03/09 02:18:35 by binam            ###   ########.fr       */
+/*   Updated: 2022/03/16 15:45:18 by binam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	create_image_and_window(t_data *data)
 {
-	data->img = (void **)malloc(sizeof(void *) * 8);
+	check_something(data);
 	data->img[0] = mlx_xpm_file_to_image(data->mlx,
 			"./src/img/zemin.xpm",
 			&data->imgx, &data->imgy);
@@ -39,4 +39,16 @@ void	create_image_and_window(t_data *data)
 	data->img[7] = mlx_xpm_file_to_image(data->mlx,
 			"./src/img/p_arka.xpm",
 			&data->imgx, &data->imgy);
+}
+void	check_something(t_data *data)
+{
+	data->mlx_window = mlx_new_window(data->mlx, 64 * data->map_width, 
+				64 * data->map_height, "So_Long");
+	if (!data->mlx_window)
+		;
+		//7 resim de kontrol edilecek;
+	data->img = (void **)malloc(sizeof(void *) * 8);
+	if (!data->img)
+		;
+	//free yapılacak 
 }

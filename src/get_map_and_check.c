@@ -6,11 +6,21 @@
 /*   By: binam <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 05:46:54 by binam             #+#    #+#             */
-/*   Updated: 2022/03/07 22:04:33 by binam            ###   ########.fr       */
+/*   Updated: 2022/03/16 15:45:24 by binam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "solong.h"
+
+static void	control(int fd, char *buffer, char *tmp)
+{
+	if (!tmp)
+	{
+		free(buffer);
+		ft_printf("Error\n your map is NULL\n");
+		exit(1);
+	}
+}
 
 void	get_map(t_data *data, char *argv2)
 {
@@ -25,8 +35,7 @@ void	get_map(t_data *data, char *argv2)
 		map_type_error();
 	buffer = ft_calloc(1, 1);
 	tmp = get_next_line(fd);
-	if (!tmp)
-		free(buffer);
+	control(fd, buffer, tmp);
 	data->map_width = ft_strlen(tmp) - 1;
 	while (tmp)
 	{
@@ -38,7 +47,7 @@ void	get_map(t_data *data, char *argv2)
 	}
 	data->buffer = buffer;
 	data->map = ft_split(buffer, '\n');
-	check_map_parent(data);
+	check_map_wall(data);
 }
 
 void	check_map_parent(t_data *data)
@@ -46,7 +55,9 @@ void	check_map_parent(t_data *data)
 	char	*map;
 	int		player;
 	int		exit;
+	int		other;
 
+	other = 0;
 	exit = 0;
 	player = 0;
 	map = data->buffer;
@@ -58,11 +69,13 @@ void	check_map_parent(t_data *data)
 			data->collect++;
 		else if (*map == 'E')
 			exit++;
+		else if ((*map != '1' && *map != '0') || *map == '\n')
+			other++;
 		map++;
 	}
-	if (!(player == 1 && data->collect >= 1 && exit >= 1))
+	if (!(player == 1 && data->collect >= 1 && exit >= 1)
+		|| (int)data->map_height != ++other)
 		map_parent_error(data, 1);
-	check_map_wall(data);
 }
 
 void	check_map_wall(t_data *data)
@@ -74,7 +87,7 @@ void	check_map_wall(t_data *data)
 	while (data->map[++i])
 		if (ft_strlen(data->map[i]) != data->map_width)
 			map_parent_error(data, 2);
-		i = -1;
+	i = -1;
 	while (data->map[++i])
 		if (data->map[i][0] != '1' || data->map[i][data->map_width - 1] != '1')
 			map_parent_error(data, 3);
@@ -84,7 +97,7 @@ void	check_map_wall(t_data *data)
 	while (data->map[0][++i] && data->map[j][++i])
 		if (data->map[0][i] != '1' || data->map[j][i] != '1')
 			map_parent_error(data, 4);
-	ft_printf("Wall Check Succes\n");
+	check_map_parent(data);
 }
 
 int	check_map_type(char *argv2)

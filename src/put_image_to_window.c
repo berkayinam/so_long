@@ -14,7 +14,7 @@
 
 static void	player(t_data *data, int i)
 {
-	mlx_put_image_to_window(data->mlx, data->mlx_window, data->karakter,
+	mlx_put_image_to_window(data->mlx, data->mlx_window, data->character,
 		data->x, data->y);
 	data->index = i;
 }

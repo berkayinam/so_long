@@ -38,13 +38,11 @@ void	ft_map_free(t_data *data)
 
 void	game_finish(t_data *data)
 {
-	if (data->collect == data->exp && data->buffer[data->index] == 'E')
-		ft_printf("SAVASCI BASARILI BIR SEKILDE KAPIYA ULASTI\n");
-	ft_printf("GG WP ADIM SAYIN = %d\n", data->step);
+	if (data->collect == data->exp && data->gameend == 1)
+		ft_printf("GG WP Your Total Move Count = %d\n", data->step);
 	ft_img_free(data);
 	ft_map_free(data);
 	free(data->buffer);
 	free(data);
-	system("leaks so_long\n");
 	exit(1);
 }

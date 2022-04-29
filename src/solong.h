@@ -6,7 +6,7 @@
 /*   By: binam <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 22:31:14 by binam             #+#    #+#             */
-/*   Updated: 2022/03/07 21:35:11 by binam            ###   ########.fr       */
+/*   Updated: 2022/03/16 15:42:23 by binam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef struct s_data
 	void	*mlx;
 	void	*mlx_window;
 	void	**img;
-	void	*karakter;
+	void	*character;
 	int		imgx;
 	int		imgy;
 	int		x;
@@ -41,6 +41,7 @@ typedef struct s_data
 	size_t	index;
 	char	**map;
 	char	*buffer;
+	int		gameend;
 }	t_data;
 
 void	write_scr(t_data *data);
@@ -64,5 +65,6 @@ void	map_parent_error(t_data *data, int i);
 void	map_left_right_wall_error(void);
 void	map_bottom_or_top_error(void);
 void	map_type_error(void);
+void	check_something(t_data *data);
 void	game_finish(t_data *data);
 #endif

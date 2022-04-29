@@ -23,7 +23,7 @@ void	map_parent_error(t_data *data, int i)
 	else if (i == 4)
 		map_bottom_or_top_error();
 	else
-		ft_printf("Error\nMap Parent Error ! Maybe you left your ANIME girl :((\n");
+		ft_printf("Error\n Maybe you missed your ANIME girl :((\n");
 	system("leaks so_long\n");
 	exit(1);
 }
@@ -44,14 +44,14 @@ void	map_bottom_or_top_error(void)
 
 void	map_left_right_wall_error(void)
 {
-	ft_printf("Error\nMap Left Or Right WaLL Error :(( \n");
+	ft_printf("Error\nMap Left Or Right WaLL Error :((\n");
 	system("leaks so_long\n");
 	exit(1);
 }
 
 void	map_type_error(void)
 {
-	ft_printf("Error\nYour Map is not dinosaur :(( (.ber file type error) \n");
+	ft_printf("Error\nYour Map is not dinosaur :(( (.ber file type error)\n");
 	system("leaks so_long\n");
 	exit(1);
 }

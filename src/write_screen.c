@@ -15,4 +15,7 @@
 void	write_scr(t_data *data)
 {
 	(void)data;
+	 //-fsanitize=address -g 
+	 if (data->gameend == 1)
+	 	system("leaks so_long");
 }

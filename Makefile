@@ -1,34 +1,50 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: binam <marvin@42.fr>                       +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/03/17 18:58:49 by binam             #+#    #+#              #
+#    Updated: 2022/03/17 18:58:56 by binam            ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 SRCS = src/get_map_and_check.c src/take_image.c src/main.c src/game_finish.c\
 	   src/msg_error.c src/key_events.c src/put_image_to_window.c
 
-SRCS_BONUS = bonus/write_screen.c
+SRCS_BONUS = ./bonus/write_screen.c
 
 SRCS_MAND  = src/write_screen.c
 
-OBJS_BONUS = $(SRCS_BONUS:.c=.o)
-
 OBJS = $(SRCS:.c=.o)
 
-CC = @gcc
+OBJS_BONUS = $(SRCS_BONUS:./bonus/.c=.o)
+
+CC = gcc
 
 MFLAGS =  ./libft/libft.a ./mlx/libmlx.a ./ft_printf/libftprintf.a ./get_next_line/get_next_line.a
 
-CFLAGS = -Wall -Wextra -Werror -I./mlx -I./libft -I./ft_printf -I./get_next_line
+AFLAGS =  -Wall -Wextra -Werror -I./mlx -I./libft -I./ft_printf -I./get_next_line
 
-RM = @rm -rf
+RM = rm -rf
 
 NAME = so_long
 
-all : $(NAME)
+all :$(MFLAGS) $(NAME)
 
-$(NAME): $(OBJS) $(SRCS_MAND:.c=.o)
+$(MFLAGS):
 	make -C ./libft
-	make -C ./ft_printf
 	make -C ./get_next_line
-	$(CC) $(OBJS) $(SRCS_MAND:.c=.o) $(MFLAGS) $(CFLAGS) -framework OpenGL -framework AppKit -o $(NAME) -g
+	make -C ./ft_printf
 
-bonus : $(NAME) $(OBJS_BONUS)
-	$(CC) $(OBJS) $(OBJS_BONUS) $(MFLAGS) $(CFLAGS) -framework OpenGL -framework AppKit -o $(NAME)
+$(NAME): $(OBJS) $(SRCS_MAND)
+	$(CC) $(OBJS) $(MFLAGS) $(SRCS_MAND) $(CFLAGS) -framework OpenGL -framework AppKit -o $(NAME)
+
+bonus: $(MFLAGS) $(NAME)_bonus
+
+$(NAME)_bonus : $(OBJS) $(OBJS_BONUS)
+	$(CC) $(OBJS) $(MFLAGS) $(OBJS_BONUS) $(AFLAGS) -framework OpenGL -framework AppKit -o $(NAME)_bonus
 
 fclean : clean
 	$(RM) ./libft/*.a
@@ -36,6 +52,7 @@ fclean : clean
 	$(RM) ./ft_printf/*.a
 	$(RM) ./get_next_line/*.a
 	$(RM) $(NAME)
+	$(RM) $(NAME)_bonus
 
 clean :
 	$(RM) ./libft/*.o
