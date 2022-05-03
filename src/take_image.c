@@ -50,7 +50,7 @@ static void	subsystem_for_image(t_data *data, char *path)
 
 void	create_image_and_window(t_data *data)
 {
-	data->img = (void **)malloc(sizeof(void *) * 2140000000000000);
+	data->img = (void **)malloc(sizeof(void *) * 9);
 	if (!data->img)
 	{
 		free(data->img);
