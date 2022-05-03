@@ -44,6 +44,5 @@ void	game_finish(t_data *data)
 	ft_map_free(data);
 	free(data->buffer);
 	free(data);
-	system("leaks so_long");
 	exit(1);
 }
