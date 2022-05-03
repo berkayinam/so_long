@@ -102,11 +102,3 @@ int	key_events(int keycode, t_data *data)
 	write_scr(data);
 	return (keycode);
 }
-/* 	if(data->gameend == 1)
-	{
-		mlx_put_image_to_window(data->mlx, data->mlx_window, data->img[3],data->exit_x*64,data->exit_y*64);
-        mlx_put_image_to_window(data->mlx, data->mlx_window, data->img[4],data->exit_x * 64, data->exit_y * 64);
-		glFlush();
-		sleep(1);
-		game_finish(data);
-	} */

@@ -16,9 +16,9 @@ void	ft_img_free(t_data *data)
 {
 	int	i;
 
-	i = 0;
-	while (i < 8)
-		mlx_destroy_image(data->mlx, data->img[i++]);
+	i = -1;
+	while (++i < 8)
+		mlx_destroy_image(data->mlx, data->img[i]);
 	free(data->img);
 }
 
@@ -33,7 +33,6 @@ void	ft_map_free(t_data *data)
 		data->map[i++] = NULL;
 	}
 	free(data->map);
-	data->map = NULL;
 }
 
 void	game_finish(t_data *data)
@@ -41,8 +40,10 @@ void	game_finish(t_data *data)
 	if (data->collect == data->exp && data->gameend == 1)
 		ft_printf("GG WP Your Total Move Count = %d\n", data->step);
 	ft_img_free(data);
+	mlx_destroy_window(data->mlx, data->mlx_window);
 	ft_map_free(data);
 	free(data->buffer);
 	free(data);
+	system("leaks so_long");
 	exit(1);
 }

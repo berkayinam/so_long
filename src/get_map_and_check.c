@@ -33,7 +33,7 @@ void	get_map(t_data *data, char *argv2)
 	fd = open(argv2, O_RDONLY);
 	if (fd < 0)
 		map_type_error();
-	buffer = ft_calloc(1, 1);
+	buffer = ft_calloc(sizeof(char), 1);
 	tmp = get_next_line(fd);
 	control(fd, buffer, tmp);
 	data->map_width = ft_strlen(tmp) - 1;

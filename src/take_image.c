@@ -11,44 +11,67 @@
 /* ************************************************************************** */
 
 #include "solong.h"
+#include <stdio.h>
+//free(data);
+static void	mallocfree(t_data *data)
+{
+	ft_map_free(data);
+	free(data->buffer);
+	ft_printf("Error\n Malloc error in data->img*\n");
+	system("leaks so_long");
+	exit(1);
+}
+
+static void	specialfree(t_data *data)
+{
+	while (data->indeximg--)
+		if (data->img[data->indeximg] != NULL)
+			mlx_destroy_image(data->mlx, data->img[data->indeximg]);
+	free(data->img);
+	ft_map_free(data);
+	free(data->buffer);
+	ft_printf("Error\n Malloc error Or Missing XPM file\n");
+	system("leaks so_long");
+	exit(1);
+}
+
+static void	subsystem_for_image(t_data *data, char *path)
+{
+	data->img[data->indeximg] = mlx_xpm_file_to_image(data->mlx, path,
+			&data->imgx, &data->imgy);
+	if (data->img[data->indeximg] == NULL)
+	{
+		data->indeximg++;
+		specialfree(data);
+	}
+	else
+		data->indeximg++;
+}
 
 void	create_image_and_window(t_data *data)
 {
-	check_something(data);
-	data->img[0] = mlx_xpm_file_to_image(data->mlx,
-			"./src/img/zemin.xpm",
-			&data->imgx, &data->imgy);
-	data->img[1] = mlx_xpm_file_to_image(data->mlx,
-			"./src/img/agac.xpm",
-			&data->imgx, &data->imgy);
-	data->img[2] = mlx_xpm_file_to_image(data->mlx,
-			"./src/img/sake.xpm",
-			&data->imgx, &data->imgy);
-	data->img[3] = mlx_xpm_file_to_image(data->mlx,
-			"./src/img/kapi.xpm",
-			&data->imgx, &data->imgy);
-	data->img[4] = mlx_xpm_file_to_image(data->mlx,
-			"./src/img/p_on.xpm",
-			&data->imgx, &data->imgy);
-	data->img[5] = mlx_xpm_file_to_image(data->mlx,
-			"./src/img/p_sol.xpm",
-			&data->imgx, &data->imgy);
-	data->img[6] = mlx_xpm_file_to_image(data->mlx,
-			"./src/img/p_sag.xpm",
-			&data->imgx, &data->imgy);
-	data->img[7] = mlx_xpm_file_to_image(data->mlx,
-			"./src/img/p_arka.xpm",
-			&data->imgx, &data->imgy);
+	data->img = (void **)malloc(sizeof(void *) * 2140000000000000);
+	if (!data->img)
+	{
+		free(data->img);
+		mallocfree(data);
+	}
+	subsystem_for_image(data, GROUND);
+	subsystem_for_image(data, TREE);
+	subsystem_for_image(data, SAKE);
+	subsystem_for_image(data, DOOR1);
+	subsystem_for_image(data, PL_FT);
+	subsystem_for_image(data, PL_LT);
+	subsystem_for_image(data, PL_RT);
+	subsystem_for_image(data, PL_BK);
 }
+
 void	check_something(t_data *data)
 {
-	data->mlx_window = mlx_new_window(data->mlx, 64 * data->map_width, 
-				64 * data->map_height, "So_Long");
+	data->img[8] = 0;
+	data->mlx_window = mlx_new_window(data->mlx, 64 * data->map_width,
+			64 * data->map_height, "So_Long");
 	if (!data->mlx_window)
-		;
-		//7 resim de kontrol edilecek;
-	data->img = (void **)malloc(sizeof(void *) * 8);
-	if (!data->img)
-		;
-	//free yapılacak 
+		game_finish(data);
+	data->character = data->img[4];
 }

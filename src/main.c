@@ -20,9 +20,14 @@ int	xbutton(t_data *data)
 
 int	happyend(t_data *data)
 {
+	int	i;
+
+	i = 0;
 	if (data->gameend == 1)
 	{
 		ft_printf("Finally you find exit door\n");
+		while (i++ < 100000000)
+			;
 		game_finish(data);
 	}
 	return (0);
@@ -35,13 +40,15 @@ int	main(int argc, char **argv)
 	if (argc == 2)
 	{
 		data = (t_data *)ft_calloc(sizeof(t_data), 1);
+		if (!data)
+			exit(1);
 		data->mlx = mlx_init();
 		if (check_map_type(argv[1]))
 			get_map(data, argv[1]);
 		else
 			map_type_error();
 		create_image_and_window(data);
-		data->character = data->img[4];
+		check_something(data);
 		put_image_background(data);
 		put_image_to_window(data);
 		write_scr(data);

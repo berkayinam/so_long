@@ -21,6 +21,15 @@
 # include "../ft_printf/ft_printf.h"
 # include "../get_next_line/get_next_line.h"
 
+# define GROUND "./src/img/game_ground.xpm"
+# define TREE "./src/img/game_wall.xpm"
+# define SAKE "./src/img/game_sake.xpm"
+# define DOOR1 "./src/img/exit_door_position_1.xpm"
+# define PL_FT "./src/img/player_front.xpm"
+# define PL_LT "./src/img/player_left.xpm"
+# define PL_RT "./src/img/player_right.xpm"
+# define PL_BK "./src/img/player_back.xpm"
+
 typedef struct s_data
 {
 	void	*mlx;
@@ -32,6 +41,7 @@ typedef struct s_data
 	int		x;
 	int		y;
 	int		mapw1;
+	int		indeximg;
 	int		collect;
 	int		exp;
 	int		step;
@@ -65,6 +75,6 @@ void	map_parent_error(t_data *data, int i);
 void	map_left_right_wall_error(void);
 void	map_bottom_or_top_error(void);
 void	map_type_error(void);
-void	check_something(t_data *data);
 void	game_finish(t_data *data);
+void	check_something(t_data *data);
 #endif
