@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "solong.h"
-#include <stdio.h>
+
 //free(data);
 static void	mallocfree(t_data *data)
 {

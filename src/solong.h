@@ -32,6 +32,8 @@
 
 typedef struct s_data
 {
+	char	**map;
+	char	*buffer;
 	void	*mlx;
 	void	*mlx_window;
 	void	**img;
@@ -45,13 +47,11 @@ typedef struct s_data
 	int		collect;
 	int		exp;
 	int		step;
+	int		gameend;
 	int		check_parent;
 	size_t	map_width;
 	size_t	map_height;
 	size_t	index;
-	char	**map;
-	char	*buffer;
-	int		gameend;
 }	t_data;
 
 void	write_scr(t_data *data);

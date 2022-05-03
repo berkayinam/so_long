@@ -26,7 +26,7 @@ int	happyend(t_data *data)
 	if (data->gameend == 1)
 	{
 		ft_printf("Finally you find exit door\n");
-		while (i++ < 100000000)
+		while (i++ < 70000000)
 			;
 		game_finish(data);
 	}
@@ -51,13 +51,13 @@ int	main(int argc, char **argv)
 		check_something(data);
 		put_image_background(data);
 		put_image_to_window(data);
-		write_scr(data);
 		mlx_loop_hook(data->mlx, happyend, data);
 		mlx_hook(data->mlx_window, 2, 1L << 0, key_events, data);
 		mlx_hook(data->mlx_window, 17, 0, xbutton, data);
+		write_scr(data);
 		mlx_loop(data->mlx);
 	}
 	else
-		ft_printf("Wrong Arguman");
+		ft_printf("Error\nWrong Arguman");
 	exit(1);
 }
