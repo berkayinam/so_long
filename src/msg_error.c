@@ -52,6 +52,5 @@ void	map_left_right_wall_error(void)
 void	map_type_error(void)
 {
 	ft_printf("Error\nYour Map is not dinosaur :(( (.ber file type error)\n");
-	system("leaks so_long\n");
 	exit(1);
 }
