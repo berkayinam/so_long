@@ -1,4 +1,5 @@
 # so_long
+115/100 grade
 so_long Project in 42 Ecole Istanbul
 
 open directory in terminal and
