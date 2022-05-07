@@ -15,3 +15,4 @@ open directory in terminal and
 
 
 /tests Created By https://github.com/mkaramuk.
+if your program will exit(1) at the failed moment. can you run with bash test.sh;
