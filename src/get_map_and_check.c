@@ -94,7 +94,7 @@ void	check_map_wall(t_data *data)
 	j = i - 1;
 	data->map_height = j + 1;
 	i = -1;
-	while (data->map[0][++i] && data->map[j][++i])
+	while (data->map[0][i] && data->map[j][++i])
 		if (data->map[0][i] != '1' || data->map[j][i] != '1')
 			map_parent_error(data, 4);
 	check_map_parent(data);
