@@ -6,16 +6,16 @@
 /*   By: binam <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 13:41:13 by binam             #+#    #+#             */
-/*   Updated: 2022/02/02 14:47:10 by binam            ###   ########.fr       */
+/*   Updated: 2022/05/09 16:21:22 by binam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-#ifndef BUFFER_SIZE
-# define BUFFER_SIZE 1
-#endif
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1
+# endif
 
 # include <stdlib.h>
 # include <unistd.h>

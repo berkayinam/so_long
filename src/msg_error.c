@@ -6,7 +6,7 @@
 /*   By: binam <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 05:47:26 by binam             #+#    #+#             */
-/*   Updated: 2022/03/07 22:49:37 by binam            ###   ########.fr       */
+/*   Updated: 2022/05/17 14:18:08 by binam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,28 +24,24 @@ void	map_parent_error(t_data *data, int i)
 		map_bottom_or_top_error();
 	else
 		ft_printf("Error\n Maybe you missed your ANIME girl :((\n");
-	system("leaks so_long\n");
 	exit(1);
 }
 
 void	map_line_boundry_error(void)
 {
 	ft_printf("Error\nMap Line too toooo long Error :((\n");
-	system("leaks so_long\n");
 	exit(1);
 }
 
 void	map_bottom_or_top_error(void)
 {
 	ft_printf("Error\nYour ANIME girl falls out map Error :((\n");
-	system("leaks so_long\n");
 	exit(1);
 }
 
 void	map_left_right_wall_error(void)
 {
 	ft_printf("Error\nMap Left Or Right WaLL Error :((\n");
-	system("leaks so_long\n");
 	exit(1);
 }
 

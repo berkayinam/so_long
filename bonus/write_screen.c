@@ -24,8 +24,4 @@ void	write_scr(t_data *data)
 	mlx_string_put(data->mlx, data->mlx_window, 150, 20, 0xffff99, "Step : ");
 	mlx_string_put(data->mlx, data->mlx_window, 200, 20, 0xffff99, variable);
 	free(variable);
-	if (data->gameend == 1)
-	{
-		system("leaks so_long");
-	}
 }

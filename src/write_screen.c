@@ -6,7 +6,7 @@
 /*   By: binam <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 17:41:48 by binam             #+#    #+#             */
-/*   Updated: 2022/03/07 17:41:49 by binam            ###   ########.fr       */
+/*   Updated: 2022/05/17 14:17:48 by binam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,4 @@
 void	write_scr(t_data *data)
 {
 	(void)data;
-	if (data->gameend == 1)
-		system("leaks so_long");
 }

@@ -6,7 +6,7 @@
 /*   By: binam <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 01:27:41 by binam             #+#    #+#             */
-/*   Updated: 2022/01/30 14:47:17 by binam            ###   ########.fr       */
+/*   Updated: 2022/05/09 16:20:23 by binam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,5 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 void	*ft_calloc(size_t count, size_t size);
 char	*ft_strjoin(char const *s1, char const *s2);
 void	ft_bzero(void *b, size_t n);
-char    *ft_itoa(int n);
+char	*ft_itoa(int n);
 #endif

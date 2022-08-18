@@ -18,7 +18,6 @@ static void	mallocfree(t_data *data)
 	ft_map_free(data);
 	free(data->buffer);
 	ft_printf("Error\n Malloc error in data->img*\n");
-	system("leaks so_long");
 	exit(1);
 }
 
@@ -31,7 +30,6 @@ static void	specialfree(t_data *data)
 	ft_map_free(data);
 	free(data->buffer);
 	ft_printf("Error\n Malloc error Or Missing XPM file\n");
-	system("leaks so_long");
 	exit(1);
 }
 

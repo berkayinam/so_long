@@ -26,22 +26,11 @@ int	happyend(t_data *data)
 	if (data->gameend == 1)
 	{
 		ft_printf("Finally you find exit door\n");
-		while (i++ < 70000000)
+		while (i++ < 700000000)
 			;
 		game_finish(data);
 	}
 	return (0);
-}
-
-void	control_mlx(t_data *data)
-{
-	data->mlx = mlx_init();
-	if (data->mlx == NULL)
-	{
-		ft_printf("Error\n MLX_init() Return NULL");
-		free(data);
-		exit(1);
-	}
 }
 
 int	main(int argc, char **argv)
@@ -53,7 +42,7 @@ int	main(int argc, char **argv)
 		data = (t_data *)ft_calloc(sizeof(t_data), 1);
 		if (!data)
 			exit(1);
-		control_mlx(data);
+		data->mlx = mlx_init();
 		if (check_map_type(argv[1]))
 			get_map(data, argv[1]);
 		else
